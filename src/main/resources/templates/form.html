@@ -39,7 +39,7 @@
         <!--Footer-->
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" @click="showModal = false">Close</button>
-            <button type="submit" class="btn btn-primary" @click="alert('Additional Action');" >Save changes</button>
+            <button type="submit" class="btn btn-primary" hx-post="/members/save" >Save changes</button>
         </div>
     </form>
 
