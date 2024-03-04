@@ -15,18 +15,30 @@
     <title>Member Page</title>
 </head>
 <body>
-    <div class="card container mt-5"  x-data="{ 'showModal': false }">
+    <div class="card container mt-5"
+         x-data="{ 'showModal': false, members: [] }"
+    >
         <div class="card-title mt-4">
             <h2>Card Member</h2>
 
             <div th:replace="form "></div>
+            <button @click="console.log(members)">console log</button>
+
+<!--            <template x-for="(obj, index) in members" :key="index">-->
+<!--                <span x-text="obj.name"></span>-->
+<!--            </template>-->
 
             <div class="card-body">
                 <div class="container">
-                    <table class="table table-hover" hx-get="api/members">
+                    <table
+                            id="member-table" class="table table-hover"
+                            hx-get="api/members"
+                            hx-trigger="load"
+                            hx-swap="none"
+                            @action="members = $event.detail"
+                    >
                         <thead>
                         <tr>
-                            <th scope="col">No</th>
                             <th scope="col">Name</th>
                             <th scope="col">Address</th>
                             <th scope="col">Phone Number</th>
@@ -35,9 +47,19 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-
+                        <template x-for="(obj, index) in members" :key="index">
+                            <tr>
+                                <td x-text="obj.name"></td>
+                                <td x-text="obj.address"></td>
+                                <td x-text="obj.phone_number"></td>
+                                <td x-text="obj.gender"></td>
+                                <td>
+                                    <button class="btn btn-info">edit</button>
+                                    <button class="btn btn-danger">delete</button>
+                                </td>
                         </tr>
+                        </template>
+
                         </tbody>
                     </table>
                 </div>
@@ -46,6 +68,14 @@
 
     </div>
 
+    <script>
+        let b = document.getElementById("member-table")
+        document.body.addEventListener("htmx:afterRequest",function (event) {
+            let { detail: { xhr: { response } }} = event;
+            console.log(JSON.parse(response))
+            console.log(event.target.dispatchEvent(new CustomEvent("action",{detail:JSON.parse(response)})))
+        })
+    </script>
 
 </body>
 </html>
