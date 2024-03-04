@@ -18,29 +18,16 @@ public class MemberController {
         return "member";
     }
 
-    @GetMapping("/list")
-    public String listMembers(Model model) {
-        List<MemberPojo> members = memberService.findAll();
-        model.addAttribute("members", members);
-        return "member-list";
-    }
-
     @GetMapping("/edit/{id}")
     public String editMember(@PathVariable Long id, Model model) {
         MemberPojo member = memberService.findById(id);
         model.addAttribute("member",member);
-        return "member-form";
-    }
-
-    @PostMapping("save")
-    public String saveMember(@ModelAttribute MemberPojo member) {
-         memberService.save(member);
-         return "redirect:/members/list";
+        return "form";
     }
 
     @GetMapping("/delete/{id}")
     public String deleteMember(@PathVariable Long id) {
         memberService.delete(id);
-        return "redirect:/members/list";
+        return "redirect:/members";
     }
 }

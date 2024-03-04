@@ -18,7 +18,11 @@ public class MemberService {
         return memberDao.findById(id);
     }
 
-    public void save(MemberPojo memberPojo) {
+    public void save(MemberDto req) {
+        MemberPojo memberPojo = new MemberPojo();
+        memberPojo.setName(req.name());
+        memberPojo.setAddress(req.address());
+        memberPojo.setPhone_number(req.phone_number());
         memberDao.save(memberPojo);
     }
     public void update(MemberPojo member) {

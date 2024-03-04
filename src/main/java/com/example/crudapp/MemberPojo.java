@@ -6,6 +6,10 @@ public class MemberPojo {
         private String address;
         private String phone_number;
         private String gender;
+        public MemberPojo()
+        {
+
+        }
 
         public MemberPojo(Long id, String name, String address, String phone_number, String gender) {
                 this.id = id;
