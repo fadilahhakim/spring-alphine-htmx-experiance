@@ -1,0 +1,47 @@
+<button type="button" class="btn btn-primary py-2 px-4 rounded-full" @click="showModal = true">Add Member</button>
+<!--Dialog-->
+<div class="rounded py-4 px-6" x-show="showModal" @click="showModal = false" >
+
+    <!--Title-->
+    <div class="items-center pb-3">
+        <p class="text-2xl font-bold">Form Data</p>
+    </div>
+
+    <!-- content -->
+    <form>
+        <!-- Name field -->
+        <div class="modal-body">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name:</label>
+                <input type="text" class="form-control" id="name" name="name">
+            </div>
+            <!-- Address field -->
+            <div class="mb-3">
+                <label for="address" class="form-label">Address:</label>
+                <input type="text" class="form-control" id="address" name="address">
+            </div>
+            <!-- Phone number field -->
+            <div class="mb-3">
+                <label for="phone_number" class="form-label">Phone Number:</label>
+                <input type="text" class="form-control" id="phone_number" name="phone_number">
+            </div>
+            <!-- Gender field -->
+            <div class="mb-3">
+                <label for="gender" class="form-label">Gender:</label>
+                <select class="form-select" id="gender" name="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+        </div>
+
+        <!--Footer-->
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" @click="showModal = false">Close</button>
+            <button type="submit" class="btn btn-primary" @click="alert('Additional Action');" >Save changes</button>
+        </div>
+    </form>
+
+</div>
+<!--/Dialog -->
