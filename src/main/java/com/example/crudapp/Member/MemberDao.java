@@ -1,4 +1,4 @@
-package com.example.crudapp;
+package com.example.crudapp.Member;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;

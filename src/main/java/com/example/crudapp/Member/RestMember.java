@@ -1,12 +1,7 @@
-package com.example.crudapp;
+package com.example.crudapp.Member;
 
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,4 +20,10 @@ public class RestMember {
     public void addMember(MemberDto req) {
         memberService.save(req);
     }
+
+    @PostMapping("/delete/member/{id}")
+    public void deletedMember(@PathVariable Long id) {
+        memberService.delete(id);
+    }
+
 }

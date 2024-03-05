@@ -1,13 +1,14 @@
-package com.example.crudapp;
+package com.example.crudapp.Member;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class MemberService {
-    @Autowired
+
     private MemberDao memberDao;
 
     public List<MemberPojo> findAll() {

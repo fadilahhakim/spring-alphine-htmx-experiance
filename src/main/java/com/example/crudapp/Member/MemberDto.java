@@ -1,4 +1,4 @@
-package com.example.crudapp;
+package com.example.crudapp.Member;
 
 public record MemberDto(
          Long id,
